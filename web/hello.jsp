@@ -8,10 +8,19 @@
 <body>
 
 <br><br><br>
-<c:set var="pageNum" value="${pageNum == null ? 1 : param.pageNum}"/>
+<c:set var="pageNum" value="${param.pageNum == null ? 1 : param.pageNum}"/>
+
+
+<%--
+
+1.
+
+--%>
+
+
 
 <div class="container">
-    <p>현재 페이지(pageNum) : ${pageNum}
+    <p>현재 페이지(pageNum) : ${pageNum}</p>
     <table style="margin: 10px;" class="table table-hover">
         <tr style="text-align: center; height: 50px;" class="table-secondary">
             <th scope="row">번호</th>
@@ -31,8 +40,8 @@
         </c:forEach>
     </table>
     <div style="text-align: center">
-        <c:forEach var="i" begin="1" end="5">
-            <button onclick="location.href=''" type="button" class="btn btn-secondary">${i}</button>
+        <c:forEach var="i" begin="1" end="10">
+            <button onclick="location.href='controller/hello?pageNum=${i}'" type="button" class="btn btn-secondary">${i}</button>
         </c:forEach>
     </div>
 </div>

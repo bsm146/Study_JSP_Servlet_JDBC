@@ -9,15 +9,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("")
+@WebServlet("/controller/*")
 public class MainController extends HttpServlet{
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        BoardDAO boardDAO = new BoardDAO();
-        boardDAO.boardView(request, response);
-        request.getRequestDispatcher("/nand.jsp").forward(request, response);
+        String requestURI = request.getRequestURI();
+        int lastSlash = requestURI.lastIndexOf("/");
+        requestURI = (requestURI.substring(lastSlash)).substring(1);
+
+        if (requestURI.equals("hello")) {
+            BoardDAO boardDAO = new BoardDAO();
+            boardDAO.boardView(request, response);
+            request.getRequestDispatcher("/hello.jsp").forward(request, response);
+
+//            request.getRequestDispatcher("../hello.jsp").forward(request, response);
+//            request.getRequestDispatcher("/hello.jsp").forward(request, response);
+        }
+
+
 
     }
 }
