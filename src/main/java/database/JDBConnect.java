@@ -9,17 +9,18 @@ public class JDBConnect {
     public PreparedStatement pstmt;
     public Statement stmt;
 
-    public void JDBConnect() {
+    public JDBConnect() {
+
         try {
             String url = "jdbc:mysql://localhost:3306/board";
             String user = "root";
             String password = "1234";
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, user, password);
             System.out.println("DB 연결 성공");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             System.out.println("DB 연결 실패");
+            e.printStackTrace();
         }
     }
 

@@ -1,8 +1,8 @@
-package controller;
+package test;
 
 import java.sql.*;
 
-public class test {
+public class Test {
 
     public static void main(String[] args) {
 

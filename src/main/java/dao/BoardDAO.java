@@ -1,30 +1,32 @@
 package dao;
 
+import database.JDBConnect;
+import dto.BoardDTO;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-//public class BoardDAO extends JDBConnect {
-public class BoardDAO {
+public class BoardDAO extends JDBConnect {
+//public class BoardDAO {
 
-    public void boardView() {
+    public void boardView(HttpServletRequest request, HttpServletResponse response) {
 
-        System.out.println(2);
+        List<BoardDTO> boardList = new ArrayList<>();
 
-        Statement stmt = null;
-        ResultSet rs = null;
-        Connection con = null;
-
-        try {
-            String url = "jdbc:mysql://localhost:3306/board";
-            String user = "root";
-            String password = "1234";
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, user, password);
-            System.out.println("DB 연결 성공");
-        }
-        catch (Exception e) {
-            System.out.println("DB 연결 실패");
-            e.printStackTrace();
-        }
+//        try {
+//            String url = "jdbc:mysql://localhost:3306/board";
+//            String user = "root";
+//            String password = "1234";
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            con = DriverManager.getConnection(url, user, password);
+//            System.out.println("DB 연결 성공");
+//        } catch (Exception e) {
+//            System.out.println("DB 연결 실패");
+//            e.printStackTrace();
+//        }
 
         try {
             String sql = "SELECT * FROM board";
@@ -33,15 +35,20 @@ public class BoardDAO {
 
             while (rs.next()) {
                 System.out.println(rs.getString(1) + "   " + rs.getString(2));
+                BoardDTO boardDTO = new BoardDTO();
+                boardDTO.setId(rs.getInt("id"));
+                boardDTO.setName(rs.getString("name"));
+                boardDTO.setPasswd(rs.getString("passwd"));
+                boardList.add(boardDTO);
             }
-        }
-        catch(SQLException ex) {
+
+            request.setAttribute("boardList", boardList);
+
+        } catch (SQLException ex) {
             System.out.print("조회 실패");
             System.out.print("SQLException : " + ex.getMessage());
             ex.printStackTrace();
         }
-
-
 
 
     }
