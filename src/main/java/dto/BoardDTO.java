@@ -3,8 +3,8 @@ package dto;
 public class BoardDTO {
 
     private int id;
-    private String name;
-    private String passwd;
+    private String title;
+    private String content;
 
     public int getId() {
         return id;
@@ -14,28 +14,28 @@ public class BoardDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getPasswd() {
-        return passwd;
+    public String getContent() {
+        return content;
     }
 
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override
     public String toString() {
         return "BoardDTO{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", passwd='" + passwd + '\'' +
+                ", name='" + title + '\'' +
+                ", passwd='" + content + '\'' +
                 '}';
     }
 }

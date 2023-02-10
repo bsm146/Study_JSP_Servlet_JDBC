@@ -16,41 +16,25 @@ public class BoardDAO extends JDBConnect {
         List<BoardDTO> boardList = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM board";
+            String sql = "SELECT * FROM board ORDER BY id DESC";
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
                 BoardDTO boardDTO = new BoardDTO();
                 boardDTO.setId(rs.getInt("id"));
-                boardDTO.setName(rs.getString("name"));
-                boardDTO.setPasswd(rs.getString("passwd"));
+                boardDTO.setTitle(rs.getString("title"));
+                boardDTO.setContent(rs.getString("content"));
                 boardList.add(boardDTO);
             }
 
             request.setAttribute("boardList", boardList);
-        }
 
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             System.out.print("boardView 실패");
             ex.printStackTrace();
-        }
-
-        finally {
+        } finally {
             close();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
