@@ -4,19 +4,19 @@ import java.sql.*;
 
 public class JDBConnect {
 
-    public Connection con;
     public ResultSet rs;
-    public PreparedStatement pstmt;
     public Statement stmt;
+    public Connection con;
+    public PreparedStatement pstmt;
 
     public JDBConnect() {
 
         try {
-            String url = "jdbc:mysql://localhost:3306/board";
-            String user = "root";
-            String password = "1234";
+            final String DB_URL = "jdbc:mysql://localhost:3306/board";
+            final String DB_USER = "root";
+            final String DB_PASSWORD = "1234";
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, user, password);
+            con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             System.out.println("DB 연결 성공");
         } catch (Exception e) {
             System.out.println("DB 연결 실패");
@@ -26,13 +26,12 @@ public class JDBConnect {
 
     public void close() {
         try {
-            if (rs != null)		rs.close();
-            if (con != null)	con.close();
-            if (stmt != null)	stmt.close();
-            if (pstmt != null)	pstmt.close();
+            if (rs != null) rs.close();
+            if (con != null) con.close();
+            if (stmt != null) stmt.close();
+            if (pstmt != null) pstmt.close();
             System.out.println("DB 해제 성공\n");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("DB 해제 실패\n");
             e.printStackTrace();
         }

@@ -8,7 +8,9 @@
           <element id="module-output" name="test3" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="mysql-connector-j-8.0.32" />
+          <element id="library" level="project" name="mysql-connector-j-8.0.321" />
+          <element id="file-copy" path="$PROJECT_DIR$/../jar/taglibs-standard-impl-1.2.5.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../jar/javax.servlet.jsp.jstl-api-1.2.2.jar" />
         </element>
       </element>
     </root>
