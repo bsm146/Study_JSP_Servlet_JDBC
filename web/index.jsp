@@ -7,8 +7,8 @@
 
 qwe
 
-<a href="hello.jsp">move</a>
-<button onclick="location='hello.jsp'" type="button">move</button>
+<a href="hello.jsp">move(a)</a>
+<button onclick="location='hello.jsp'" type="button">move(button1)</button>
 
 </body>
 </html>

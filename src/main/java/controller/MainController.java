@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/controller/*")
-public class MainController extends HttpServlet{
+public class MainController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,17 +18,20 @@ public class MainController extends HttpServlet{
         String requestURI = request.getRequestURI();
         int lastSlash = requestURI.lastIndexOf("/");
         requestURI = (requestURI.substring(lastSlash)).substring(1);
+        System.out.println();
+
+        // ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+        // ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+        System.out.println();
 
         if (requestURI.equals("hello")) {
             BoardDAO boardDAO = new BoardDAO();
-            boardDAO.boardView(request, response);
+            boardDAO.boardList(request, response);
             request.getRequestDispatcher("/hello.jsp").forward(request, response);
-
-//            request.getRequestDispatcher("../hello.jsp").forward(request, response);
-//            request.getRequestDispatcher("/hello.jsp").forward(request, response);
         }
-
-
-
     }
 }
