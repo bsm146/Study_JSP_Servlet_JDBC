@@ -13,11 +13,12 @@ public class BoardDAO extends JDBConnect {
 
     public void boardList(HttpServletRequest request, HttpServletResponse response) {
 
+        pstmt = null;
+        rs = null;
         List<BoardDTO> boardList = new ArrayList<>();
 
         Integer pageNum = request.getParameter("pageNum") == null ? 1 : Integer.parseInt(request.getParameter("pageNum"));
         pageNum = (pageNum - 1) * 10;
-//        System.out.println("boardView pageNum : " + pageNum);
 
         try {
             String sql = "SELECT * FROM board ORDER BY id DESC LIMIT ?, 10";
@@ -37,7 +38,7 @@ public class BoardDAO extends JDBConnect {
             request.setAttribute("boardCount", boardCount());
 
         } catch (SQLException ex) {
-            System.out.print("boardView 실패");
+            System.out.println("boardView 실패");
             ex.printStackTrace();
         } finally {
             close();
@@ -46,10 +47,12 @@ public class BoardDAO extends JDBConnect {
 
     public int boardCount() {
 
+        stmt = null;
+        rs = null;
         int boardCount = 0;
 
         try {
-            String sql = "SELECT CEIL(COUNT(*) / 10) 'boardCount' FROM board";
+            String sql = "SELECT CEIL(COUNT(*) / 10) FROM board";
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
 
@@ -58,11 +61,10 @@ public class BoardDAO extends JDBConnect {
             }
 
         } catch (SQLException ex) {
-            System.out.print("boardCount 실패");
+            System.out.println("boardCount 실패");
             ex.printStackTrace();
         } finally {
             close();
-            System.out.println("boardCount : " + boardCount);
         }
 
         return boardCount;

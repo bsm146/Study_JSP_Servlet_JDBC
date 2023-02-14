@@ -14,9 +14,12 @@ public class Test {
 //        System.out.println(10 - 9 / 10);
 //        System.out.println("------------------");
 
-        System.out.println(1 % 10);
-        System.out.println(5 - 4 % 10);
-        System.out.println(10 - 9 % 10);
+        System.out.println((((21 - 1) / 10) * 10) + 1);
+        System.out.println((((30 - 1) / 10) * 10) + 1);
+        System.out.println("------------------");
+
+        System.out.println(21 - ((21 - 1) % 10));
+        System.out.println(30 - ((30 - 1) % 10));
         System.out.println("------------------");
 
 

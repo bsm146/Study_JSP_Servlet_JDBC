@@ -4,23 +4,24 @@
 <html>
 <head>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>nand.jsp</title>
+    <title>hello.jsp</title>
 </head>
 <body>
 
     <br>
 
     <c:set var="pageNum"  value="${param.pageNum == null ? 1 : param.pageNum}"/> <%-- 현재 페이지번호 --%>
-    <c:set var="startNum" value="${pageNum - (pageNum - 1) % 10}"/>              <%-- for문 시작 번호 --%>
+    <c:set var="startNum" value="${pageNum - ((pageNum - 1) % 10)}"/>              <%-- for문 시작 번호 --%>
     <c:set var="endNum"   value="${startNum + 9}"/>                              <%-- for문 종료 번호 --%>
-
-    <fmt:parseNumber var="pageNumNext" value="${pageNum / 10}" integerOnly="true"/>
+    <fmt:parseNumber var="pageNumEnd" value="${boardCount}" integerOnly="true"/>
 
     <div class="container">
         <p>현재 페이지 : ${pageNum}</p>
+        <p>이전 페이지 : ${endNum - 19}</p>
         <p>다음 페이지 : ${endNum + 1}</p>
         <p>버튼(for문) : ${startNum} ~ ${endNum}</p>
-        <p>버튼 번호 : ${boardCount}</p>
+        <p>버튼 개수 : ${boardCount}</p>
+        <p>pageNumEnd : ${pageNumEnd - (pageNumEnd - 1) % 10}</p>
         <br>
         <table style="margin: 10px;" class="table table-hover">
             <tr style="text-align: center; height: 50px;" class="table-secondary">
@@ -41,13 +42,15 @@
             </c:forEach>
         </table>
         <div style="text-align: center">
-            <button onclick="location.href='/controller/hello?pageNum=${0}'" type="button" class="btn btn-secondary">◀</button>
+            <button ${pageNum < 11 ? "disabled='disabled'" : ""} onclick="location.href='/controller/hello?pageNum=1'" type="button" class="btn btn-secondary">◀◀</button>
+            <button ${pageNum < 11 ? "disabled='disabled'" : ""} onclick="location.href='/controller/hello?pageNum=${endNum - 19}'" type="button" class="btn btn-secondary">◀</button>
             <c:forEach var="i" begin="${startNum}" end="${endNum}">
                 <c:if test="${i <= boardCount}">
-                    <button onclick="location.href='/controller/hello?pageNum=${i}'" type="button" class="btn btn-secondary">${i}</button>
+                    <button ${i != pageNum ? "style='background: #d2d2d2; border: none'" : ""} onclick="location.href='/controller/hello?pageNum=${i}'" type="button" class="btn btn-secondary">${i}</button>
                 </c:if>
             </c:forEach>
-            <button onclick="location.href='/controller/hello?pageNum=${endNum + 1}'"type="button" class="btn btn-secondary">▶</button>
+            <button ${endNum > boardCount ? "disabled='disabled'" : ""} onclick="location.href='/controller/hello?pageNum=${endNum + 1}'"type="button" class="btn btn-secondary">▶</button>
+            <button ${endNum > boardCount ? "disabled='disabled'" : ""} onclick="location.href='/controller/hello?pageNum=${pageNumEnd}'"type="button" class="btn btn-secondary">▶▶</button>
         </div>
     </div>
 
