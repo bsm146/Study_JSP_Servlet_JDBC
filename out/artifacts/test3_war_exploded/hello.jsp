@@ -11,7 +11,7 @@
     <br>
 
     <c:set var="pageNum"  value="${param.pageNum == null ? 1 : param.pageNum}"/> <%-- 현재 페이지번호 --%>
-    <c:set var="startNum" value="${pageNum - ((pageNum - 1) % 10)}"/>              <%-- for문 시작 번호 --%>
+    <c:set var="startNum" value="${pageNum - ((pageNum - 1) % 10)}"/>            <%-- for문 시작 번호 --%>
     <c:set var="endNum"   value="${startNum + 9}"/>                              <%-- for문 종료 번호 --%>
     <fmt:parseNumber var="pageNumEnd" value="${boardCount}" integerOnly="true"/>
 
