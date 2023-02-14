@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BoardDAO extends JDBConnect {
 
-    // 게시글 조회 메소드
+    // 게시글 조회 메소드.
     // DB에 있는 게시글 전부를 가져오지 않고 최대 10개만 추출하려고 함
     public void boardList(HttpServletRequest request, HttpServletResponse response) {
 
