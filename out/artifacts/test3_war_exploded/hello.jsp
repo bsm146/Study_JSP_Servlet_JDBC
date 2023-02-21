@@ -60,14 +60,5 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-</table>
 </body>
 </html>
