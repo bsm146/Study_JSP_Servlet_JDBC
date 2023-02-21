@@ -16,12 +16,13 @@
     <fmt:parseNumber var="pageNumEnd" value="${boardCount}" integerOnly="true"/> <%-- 버튼 개수(boardCount)를 정수로 변환 후 pageNumEnd에 넘김(마지막 버튼(▶▶) 만들기 위해서) --%>
 
     <div class="container">
-        <p>현재 페이지 : ${pageNum}</p>                             <%-- 현재 페이지번호 --%>
-        <p>이전 페이지 : ${endNum - 19}</p>                         <%-- 이전 버튼(◀) --%>
-        <p>다음 페이지 : ${endNum + 1}</p>                          <%-- 다음 버튼(▶) --%>
-        <p>버튼(for문) : ${startNum} ~ ${endNum}</p>               <%-- for문 시작 index, 종료 index --%>
-        <p>버튼 개수 : ${boardCount}</p>                           <%-- 버튼 개수 --%>
-        <p>pageNumEnd : ${pageNumEnd - (pageNumEnd - 1) % 10}</p> <%-- 마지막(▶▶) 버튼 눌렀을때의 페이지 번호 --%>
+<%--        <p>현재 페이지 : ${pageNum}</p>                             &lt;%&ndash; 현재 페이지번호 &ndash;%&gt;--%>
+<%--        <p>이전 페이지 : ${endNum - 19}</p>                         &lt;%&ndash; 이전 버튼(◀) &ndash;%&gt;--%>
+<%--        <p>다음 페이지 : ${endNum + 1}</p>                          &lt;%&ndash; 다음 버튼(▶) &ndash;%&gt;--%>
+<%--        <p>버튼(for문) : ${startNum} ~ ${endNum}</p>               &lt;%&ndash; for문 시작 index, 종료 index &ndash;%&gt;--%>
+<%--        <p>버튼 개수 : ${boardCount}</p>                           &lt;%&ndash; 버튼 개수 &ndash;%&gt;--%>
+<%--        <p>pageNumEnd : ${pageNumEnd - (pageNumEnd - 1) % 10}</p> &lt;%&ndash; 마지막(▶▶) 버튼 눌렀을때의 페이지 번호 &ndash;%&gt;--%>
+
         <br>
         <table style="margin: 10px;" class="table table-hover">
             <tr style="text-align: center; height: 50px;" class="table-secondary">
@@ -41,6 +42,7 @@
                 </tr>
             </c:forEach>
         </table>
+        <br>
         <div style="text-align: center">
             <%-- 1 ~ 10 페이지에서 처음(◀◀), 이전(◀) 버튼 비활성화 --%>
             <button ${pageNum < 11 ? "disabled='disabled'" : ""} onclick="location.href='/controller/hello?pageNum=1'" type="button" class="btn btn-secondary">◀◀</button>
@@ -57,6 +59,14 @@
             <button ${endNum > boardCount ? "disabled='disabled'" : ""} onclick="location.href='/controller/hello?pageNum=${pageNumEnd - (pageNumEnd - 1) % 10}'"type="button" class="btn btn-secondary">▶▶</button>
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 </table>
 </body>

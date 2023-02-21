@@ -2,22 +2,25 @@ public class Test {
 
     public static void main(String[] args) {
 
-//        System.out.println(3 - (3 - 1) % 5);
+        add(5, 3);
+        add2(10, 5);
 
-//        System.out.println(1);
-//        System.out.println(5);
-//        System.out.println(10);
-//        System.out.println("------------------");
-//
-//        System.out.println(1 / 10);
-//        System.out.println(5 - 4 / 10);
-//        System.out.println(10 - 9 / 10);
-//        System.out.println("------------------");
+        StringBuffer word = new StringBuffer();
+        word.append("hello");
 
-        System.out.println("------------------");
+        System.out.println(word.equals("hello"));
+        System.out.println(word.toString().equals("hello"));
 
-        System.out.println("------------------");
+    }
 
+    public static void add(int a, int b) {
 
+        System.out.println(a + b);
+        add2(a, b);
+    }
+
+    public static void add2(int a, int b) {
+
+        System.out.println(a - b);
     }
 }
